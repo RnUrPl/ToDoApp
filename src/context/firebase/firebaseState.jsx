@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useReducer } from "react";
 import axios from 'axios'
 import { FirebaseContext } from "./FirebaseContext";
@@ -18,7 +18,7 @@ export const FirebaseState =({children}) => {
 
     const showLoader = () => dispatch({type: SHOW_LOADER})
 
-    const fetchNotes = async() => {
+   const fetchNotes = useCallback(async () => {
         showLoader()
         const res = await axios.get(`${url}/notes.json`)
 
@@ -33,7 +33,7 @@ export const FirebaseState =({children}) => {
             type: FETCH_NOTES, 
             payload
         })
-    }
+  }, []) 
 
     const addNote = async title =>{
         const note ={
