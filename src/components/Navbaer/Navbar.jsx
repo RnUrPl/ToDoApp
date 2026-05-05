@@ -10,13 +10,10 @@ const Navbar = () => {
                     TodoApp
                 </div>
                 <div className="navbar__section__item button">
-                    <NavLink to ="/">Главная</NavLink>
+                    <NavLink to="/">Главная</NavLink>
                 </div>
-               
-            </div>
-            <div className="navbar__section">
-                 <div className="navbar__section__item button">
-                    <NavLink to ="/about">Информация</NavLink>
+                <div className="navbar__section__item button">
+                    <NavLink to="/completedpage">Выполненные</NavLink> 
                 </div>
             </div>
         </div>

@@ -21,7 +21,7 @@ const Form = () => {
             })
             setValue('')
         }else{
-            alert.show('Введите название заметки')
+            alert.show('Введите название заметки', 'warning') 
         }
     }
 

@@ -16,6 +16,19 @@
 .note-enter-active{
     animation: note 700ms ease-in alternate-reverse;
 }
+.button-fr{
+
+    display: flex;
+    flex-direction: row;
+  
+}
+
+.btn-open{
+    border: none;
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
 
 @keyframes note{
     0%{

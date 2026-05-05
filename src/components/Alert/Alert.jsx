@@ -6,7 +6,7 @@ import './Alert.scss'
 
 
 const Alert = () => {
-    const {alert, hide} = useContext(AlertContext)
+    const {alert} = useContext(AlertContext)
 
     return (
         <CSSTransition
@@ -16,8 +16,8 @@ const Alert = () => {
         mountOnEnter
         unmountOnExit>
         <div className= {`alert alert-${alert.type || 'warning'} alert-dismissible `} >
-            <strong>Внимание</strong> {alert.text}
-            <button onClick={hide} type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            {alert.text}
+          
         </div>
         </CSSTransition>
     );

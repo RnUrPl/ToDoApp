@@ -3,7 +3,7 @@ import { useReducer } from "react";
 import axios from 'axios'
 import { FirebaseContext } from "./FirebaseContext";
 import { firebaseReducer } from "./firebaseReducer";
-import { ADD_NOTE, FETCH_NOTES, REMOVE_NOTE, SHOW_LOADER } from "../types";
+import { ADD_NOTE, FETCH_NOTES, REMOVE_NOTE, SHOW_LOADER, COMPLETE_NOTE } from "../types";
 
 const url  = process.env.REACT_APP_DB_URL
 
@@ -37,7 +37,7 @@ export const FirebaseState =({children}) => {
 
     const addNote = async title =>{
         const note ={
-            title, date: new Date().toJSON()
+            title, date: new Date().toLocaleString('ru-RU'),completed: false
         }
         try{
             const res = await axios.post( `${url}/notes.json`,note)
@@ -64,10 +64,16 @@ export const FirebaseState =({children}) => {
             payload: id
         })
     }
+
+     const completeNote = async id => {
+        const completedDate = new Date().toJSON()
+        await axios.patch(`${url}/notes/${id}.json`, { completed: true, completedDate })
+        dispatch({ type: COMPLETE_NOTE, payload: { id, completedDate } })
+    }
     
     return (
         <FirebaseContext.Provider value={{
-            showLoader, addNote, removeNote, fetchNotes, 
+            showLoader, addNote, removeNote, fetchNotes, completeNote,
             loading: state.loading,
             notes: state.notes
         }}>

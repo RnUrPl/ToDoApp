@@ -1,18 +1,29 @@
-import React from 'react';
+import { useContext } from 'react'
+import { FirebaseContext } from '../context/firebase/FirebaseContext';
+import Loader from '../components/Loader/Loader';
 
-const About = () => {
+
+const CompletedPage = () => {
+    const { loading, notes } = useContext(FirebaseContext)
+
+    const completedNotes = notes.filter(note => note.completed)
+
     return (
-        <div className ="card">
-           <div className="container">
-                <h1 className='maintext'>
-                    Что-то умное 
-                </h1>
-                <p className='text'>
-                    Еще умнее
-                </p>
-           </div>
+        <div>
+            <h2>Выполненные задачи</h2>
+            {loading
+                ? <Loader/>
+                : completedNotes.length === 0
+                    ? <p>Нет выполненных задач</p>
+                    : completedNotes.map(note => (
+                        <div key={note.id}>
+                            <span style={{ textDecoration: 'line-through' }}>{note.title}</span>
+                            <small> — выполнено: {new Date(note.completedDate).toLocaleString('ru-RU')}</small>
+                        </div>
+                    ))
+            }
         </div>
-    );
-};
+    )
+}
 
-export default About;
+export default CompletedPage;
