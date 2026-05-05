@@ -10,7 +10,7 @@ const Home = () => {
     const {loading, notes, fetchNotes,removeNote, completeNote} = useContext(FirebaseContext)
     const alert = useContext(AlertContext)
 
-    // eslint-disable-next-line 
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         fetchNotes()
     },[])
