@@ -12,7 +12,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchNotes()
-    },[fetchNotes])
+    },[])
 
     const activeNotes = notes.filter(note => !note.completed)
 
