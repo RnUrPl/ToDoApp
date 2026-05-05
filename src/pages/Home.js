@@ -1,4 +1,4 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { useContext, useEffect } from 'react';
 import Form from '../components/Form/Form';
 import Loader from '../components/Loader/Loader';
 import Notes from '../components/Notes/Notes';
@@ -12,7 +12,7 @@ const Home = () => {
 
     useEffect(() => {
         fetchNotes()
-    },[])
+    },[fetchNotes])
 
     const activeNotes = notes.filter(note => !note.completed)
 
