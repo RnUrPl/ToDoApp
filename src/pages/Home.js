@@ -13,7 +13,7 @@ const Home = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => {
         fetchNotes()
-    },[])
+    })
 
     const activeNotes = notes.filter(note => !note.completed)
 
