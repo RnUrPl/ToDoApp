@@ -10,6 +10,7 @@ const Home = () => {
     const {loading, notes, fetchNotes,removeNote, completeNote} = useContext(FirebaseContext)
     const alert = useContext(AlertContext)
 
+    // eslint-disable-next-line 
     useEffect(() => {
         fetchNotes()
     },[])
